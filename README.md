@@ -8,5 +8,6 @@
   5. LM35  
   6. LCD  
   7. LEDs
-  8. Battery
+  8. Battery  
+  9. ATmega 32  
   
