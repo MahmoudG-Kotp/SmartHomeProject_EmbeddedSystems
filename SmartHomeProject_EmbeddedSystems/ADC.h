@@ -1,5 +1,12 @@
-#ifndef ADC_H_
-#define ADC_H_
+/*
+ * ADC.h
+ *
+ *  Created on: Sep 29, 2019
+ *      Author: MahmoudGamal
+ */
+
+#ifndef ADC_H
+#define ADC_H
 #include "STD_TYPES.h"
 
 void ADC_Init(void);

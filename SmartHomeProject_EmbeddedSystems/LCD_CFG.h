@@ -1,3 +1,10 @@
+/*
+ * LCD_CFG.h
+ *
+ *  Created on: Sep 29, 2019
+ *      Author: MahmoudGamal
+ */
+
 #ifndef LCD_CFG_H
 #define LCD_CFG_H
 

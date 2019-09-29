@@ -1,5 +1,12 @@
-#ifndef GIE_H_
-#define GIE_H_
+/*
+ * GIE.h
+ *
+ *  Created on: Sep 29, 2019
+ *      Author: MahmoudGamal
+ */
+
+#ifndef GIE_H
+#define GIE_H
 
 
 //define status register address
@@ -8,4 +15,4 @@
 //first we need to enable status register to control all interrupts (parent register)
 #define GI_EN()				SET_BIT(SREG,7);
 #define GI_DIS()			CLEAR_BIT(SREG,7);
-#endif /* GIE_H_ */
+#endif /* GIE_H */

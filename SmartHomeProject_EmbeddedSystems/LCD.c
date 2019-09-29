@@ -1,3 +1,10 @@
+/*
+ * LCD.c
+ *
+ *  Created on: Sep 29, 2019
+ *      Author: MahmoudGamal
+ */
+
 #include "BIT_MATH.h"
 #include <util\delay.h>
 #include "DIO.h"

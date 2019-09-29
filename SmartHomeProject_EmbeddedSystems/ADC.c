@@ -1,3 +1,10 @@
+/*
+ * ADC.c
+ *
+ *  Created on: Sep 29, 2019
+ *      Author: MahmoudGamal
+ */
+
 #include "BIT_MATH.h"
 #include "ADC_REG.h"
 #include "ADC_CFG.h"

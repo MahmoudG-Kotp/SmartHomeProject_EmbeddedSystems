@@ -1,3 +1,10 @@
+/*
+ * TIM.c
+ *
+ *  Created on: Sep 29, 2019
+ *      Author: MahmoudGamal
+ */
+
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
 #include "DIO.h"

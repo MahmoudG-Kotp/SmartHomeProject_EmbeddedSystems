@@ -1,3 +1,10 @@
+/*
+ * TIM.h
+ *
+ *  Created on: Sep 29, 2019
+ *      Author: MahmoudGamal
+ */
+
 #ifndef TIM_H_
 #define TIM_H_
 #include "STD_TYPES.h"

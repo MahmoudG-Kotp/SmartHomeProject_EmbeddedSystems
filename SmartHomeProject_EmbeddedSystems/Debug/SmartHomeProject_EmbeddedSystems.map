@@ -165,7 +165,7 @@ LOAD d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x2154
+.text           0x00000000     0x206a
  *(.vectors)
  .vectors       0x00000000       0x54 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -354,70 +354,70 @@ LOAD d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00001af8       0x54 ./LCD.o
                 0x00001af8                LCD_WriteString
  .text.LED_Initialize
-                0x00001b4c       0x1c ./LED.o
+                0x00001b4c       0x26 ./LED.o
                 0x00001b4c                LED_Initialize
- .text.LED_ON   0x00001b68       0x1c ./LED.o
-                0x00001b68                LED_ON
- .text.LED_OFF  0x00001b84       0x1c ./LED.o
-                0x00001b84                LED_OFF
+ .text.LED_ON   0x00001b72       0x5c ./LED.o
+                0x00001b72                LED_ON
+ .text.LED_OFF  0x00001bce       0x5c ./LED.o
+                0x00001bce                LED_OFF
  .text.LED_Toggle
-                0x00001ba0       0x2e ./LED.o
-                0x00001ba0                LED_Toggle
+                0x00001c2a       0x90 ./LED.o
+                0x00001c2a                LED_Toggle
  .text.TEMP_Initialize
-                0x00001bce       0x1a ./TEMP_SENSOR.o
-                0x00001bce                TEMP_Initialize
+                0x00001cba       0x1a ./TEMP_SENSOR.o
+                0x00001cba                TEMP_Initialize
  .text.TEMP_READ
-                0x00001be8       0x5a ./TEMP_SENSOR.o
-                0x00001be8                TEMP_READ
+                0x00001cd4       0x5a ./TEMP_SENSOR.o
+                0x00001cd4                TEMP_READ
  .text.TEMP_STR_READ
-                0x00001c42       0x2e ./TEMP_SENSOR.o
-                0x00001c42                TEMP_STR_READ
+                0x00001d2e       0x2e ./TEMP_SENSOR.o
+                0x00001d2e                TEMP_STR_READ
  .text.TIM_voidInitialize
-                0x00001c70       0x94 ./TIM.o
-                0x00001c70                TIM_voidInitialize
+                0x00001d5c       0x94 ./TIM.o
+                0x00001d5c                TIM_voidInitialize
  .text.TIM_voidEnableInterrupt
-                0x00001d04       0x2a ./TIM.o
-                0x00001d04                TIM_voidEnableInterrupt
+                0x00001df0       0x2a ./TIM.o
+                0x00001df0                TIM_voidEnableInterrupt
  .text.TIM_voidDisableInterrupt
-                0x00001d2e       0x1c ./TIM.o
-                0x00001d2e                TIM_voidDisableInterrupt
+                0x00001e1a       0x1c ./TIM.o
+                0x00001e1a                TIM_voidDisableInterrupt
  .text.TIM_voidInitTimerRegister
-                0x00001d4a       0x1c ./TIM.o
-                0x00001d4a                TIM_voidInitTimerRegister
+                0x00001e36       0x1c ./TIM.o
+                0x00001e36                TIM_voidInitTimerRegister
  .text.TIM_voidSetCompareValue
-                0x00001d66       0x1c ./TIM.o
-                0x00001d66                TIM_voidSetCompareValue
+                0x00001e52       0x1c ./TIM.o
+                0x00001e52                TIM_voidSetCompareValue
  .text.TIM_voidSetCallBack
-                0x00001d82       0x24 ./TIM.o
-                0x00001d82                TIM_voidSetCallBack
+                0x00001e6e       0x24 ./TIM.o
+                0x00001e6e                TIM_voidSetCallBack
  .text.__vector_11
-                0x00001da6       0x5a ./TIM.o
-                0x00001da6                __vector_11
+                0x00001e92       0x5a ./TIM.o
+                0x00001e92                __vector_11
  .text.__vector_10
-                0x00001e00       0x5a ./TIM.o
-                0x00001e00                __vector_10
- .text.main     0x00001e5a      0x1fe ./main.o
-                0x00001e5a                main
- .text.libgcc   0x00002058        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00002058        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x00002058       0x38 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x00002058                __prologue_saves__
- .text.libgcc   0x00002090       0x36 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x00002090                __epilogue_restores__
- .text.libgcc   0x000020c6        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                0x00001eec       0x5a ./TIM.o
+                0x00001eec                __vector_10
+ .text.main     0x00001f46       0x28 ./main.o
+                0x00001f46                main
+ .text.libgcc   0x00001f6e        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00001f6e        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00001f6e       0x38 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x00001f6e                __prologue_saves__
+ .text.libgcc   0x00001fa6       0x36 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x00001fa6                __epilogue_restores__
+ .text.libgcc   0x00001fdc        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
  .text.avr-libc
-                0x000020c6       0x42 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(itoa.o)
-                0x000020c6                itoa
+                0x00001fdc       0x42 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(itoa.o)
+                0x00001fdc                itoa
  .text.avr-libc
-                0x00002108       0x20 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrev.o)
-                0x00002108                strrev
- .text.libgcc   0x00002128       0x28 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
-                0x00002128                __udivmodhi4
-                0x00002150                . = ALIGN (0x2)
+                0x0000201e       0x20 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrev.o)
+                0x0000201e                strrev
+ .text.libgcc   0x0000203e       0x28 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                0x0000203e                __udivmodhi4
+                0x00002066                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00002150        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00002150                exit
-                0x00002150                _exit
+ .fini9         0x00002066        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00002066                exit
+                0x00002066                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -436,11 +436,11 @@ LOAD d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00002150        0x4 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00002066        0x4 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00002154                _etext = .
+                0x0000206a                _etext = .
 
-.data           0x00800060      0x108 load address 0x00002154
+.data           0x00800060      0x108 load address 0x0000206a
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
@@ -529,8 +529,8 @@ LOAD d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00800168        0x2 ./TIM.o
  *(COMMON)
                 0x0080016a                PROVIDE (__bss_end, .)
-                0x00002154                __data_load_start = LOADADDR (.data)
-                0x0000225c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000206a                __data_load_start = LOADADDR (.data)
+                0x00002172                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080016a        0x0
                 0x0080016a                PROVIDE (__noinit_start, .)
@@ -555,7 +555,7 @@ LOAD d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000     0x1e60
+.stab           0x00000000     0x1ddc
  *(.stab)
  .stab          0x00000000      0x240 ./ADC.o
  .stab          0x00000240      0x1d4 ./BUZZER.o
@@ -568,18 +568,18 @@ LOAD d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                                 0x258 (size before relaxing)
  .stab          0x00000df8      0x648 ./LCD.o
                                 0x8a0 (size before relaxing)
- .stab          0x00001440      0x234 ./LED.o
-                                0x498 (size before relaxing)
- .stab          0x00001674      0x204 ./TEMP_SENSOR.o
+ .stab          0x00001440      0x300 ./LED.o
+                                0x564 (size before relaxing)
+ .stab          0x00001740      0x204 ./TEMP_SENSOR.o
                                 0x2dc (size before relaxing)
- .stab          0x00001878      0x330 ./TIM.o
+ .stab          0x00001944      0x330 ./TIM.o
                                 0x474 (size before relaxing)
- .stab          0x00001ba8      0x2b8 ./main.o
-                                0x450 (size before relaxing)
+ .stab          0x00001c74      0x168 ./main.o
+                                0x210 (size before relaxing)
 
-.stabstr        0x00000000     0x1257
+.stabstr        0x00000000     0x12c7
  *(.stabstr)
- .stabstr       0x00000000     0x1257 ./ADC.o
+ .stabstr       0x00000000     0x12c7 ./ADC.o
 
 .stab.excl
  *(.stab.excl)

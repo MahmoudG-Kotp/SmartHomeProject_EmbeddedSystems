@@ -38,6 +38,9 @@ SmartHomeProject_EmbeddedSystems.hex \
 SIZEDUMMY += \
 sizedummy \
 
+AVRDUDEDUMMY += \
+avrdudedummy \
+
 
 # All Target
 all: SmartHomeProject_EmbeddedSystems.elf secondary-outputs
@@ -68,12 +71,18 @@ sizedummy: SmartHomeProject_EmbeddedSystems.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
+avrdudedummy: SmartHomeProject_EmbeddedSystems.elf
+	@echo 'Invoking: AVRDude'
+	D:\Programs\WinAVR\bin\avrdude -pm32 -cusbasp -Uflash:w:SmartHomeProject_EmbeddedSystems.hex:a
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) SmartHomeProject_EmbeddedSystems.elf
+	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(AVRDUDEDUMMY)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) SmartHomeProject_EmbeddedSystems.elf
 	-@echo ' '
 
-secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY)
+secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY) $(AVRDUDEDUMMY)
 
 .PHONY: all clean dependents
 
