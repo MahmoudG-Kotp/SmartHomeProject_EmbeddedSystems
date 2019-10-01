@@ -105,7 +105,18 @@ void Keypad_GetKeyPressedStr(char *strPtr)
 {
 	if(Keypad_GetKeyPressed() > -1)
 	{
-		itoa(Keypad_GetKeyPressed(), strPtr, 10);
+		if(Keypad_GetKeyPressed() == 35)
+		{
+			strPtr = "*";
+		}
+		else if(Keypad_GetKeyPressed() == 42)
+		{
+			strPtr = "#";
+		}
+		else
+		{
+			itoa(Keypad_GetKeyPressed(), strPtr, 10);
+		}
 	}
 }
 
