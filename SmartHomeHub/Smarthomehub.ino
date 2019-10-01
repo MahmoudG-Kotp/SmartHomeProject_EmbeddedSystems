@@ -12,17 +12,17 @@ IPAddress subnet(255,255,255,0);
 
 ESP8266WebServer server(80);
 
-uint8_t LED1Enable = 1;
-uint8_t LED1Disable = 2;
-bool LED1status = LOW;
+uint8_t OpenFloor1 = 1;
+uint8_t CloseFloor1 = 2;
+bool FLOOR1status = LOW;
 
-uint8_t LED2Enable = 3;
-uint8_t LED2Disable = 4;
-bool LED2status = LOW;
+uint8_t OpenFloor2 = 3;
+uint8_t CloseFloor2 = 4;
+bool FLOOR2status = LOW;
 
-uint8_t LCDEnable = 5;
-uint8_t LCDDisable = 6;
-bool LCDstatus = LOW;
+uint8_t OpenDoor = 5;
+uint8_t CloseDoor = 6;
+bool DOORstatus = LOW;
 
 
 void setup() {
@@ -33,12 +33,12 @@ void setup() {
   delay(100);
   
   server.on("/", handle_OnConnect);
-  server.on("/led1on", handle_led1on);
-  server.on("/led1off", handle_led1off);
-  server.on("/led2on", handle_led2on);
-  server.on("/led2off", handle_led2off);
-  server.on("/lcdon", handle_lcdon);
-  server.on("/lcdoff", handle_lcdoff);
+  server.on("/OpenFloor1", handle_floor1on);
+  server.on("/CloseFloor1", handle_floor1off);
+  server.on("/OpenFloor2", handle_floor2on);
+  server.on("/CloseFloor2", handle_floor2off);
+  server.on("/OpenDoor", handle_opendoor);
+  server.on("/CloseDoor", handle_closedoor);
   server.onNotFound(handle_NotFound);
   
   server.begin();
@@ -46,63 +46,63 @@ void setup() {
 }
 void loop() {
   server.handleClient();
-  if(LED1status)
-  {Serial.write(LED1Enable);}
+  if(FLOOR1status)
+  {Serial.write(OpenFloor1);}
   else
-  {Serial.write(LED1Disable);}
+  {Serial.write(CloseFloor1);}
   
-  if(LED2status)
-  {Serial.write(LED2Enable);}
+  if(FLOOR2status)
+  {Serial.write(OpenFloor2);}
   else
-  {Serial.write(LED2Disable);}
+  {Serial.write(CloseFloor2);}
   
-  if(LCDstatus)
-  {Serial.write(LCDEnable);}
+  if(DOORstatus)
+  {Serial.write(OpenDoor);}
   else
-  {Serial.write(LCDDisable);}
+  {Serial.write(CloseDoor);}
 }
 
 void handle_OnConnect() {
-  LED1status = LOW;
-  LED2status = LOW;
-  LCDstatus = LOW;
-  server.send(200, "text/html", SendHTML(LED1status,LED2status,LCDstatus)); 
+  FLOOR1status = LOW;
+  FLOOR2status = LOW;
+  DOORstatus = LOW;
+  server.send(200, "text/html", SendHTML(FLOOR1status,FLOOR2status,DOORstatus)); 
 }
 
-void handle_led1on() {
-  LED1status = HIGH;
-  server.send(200, "text/html", SendHTML(true,LED2status,LCDstatus)); 
+void handle_floor1on() {
+  FLOOR1status = HIGH;
+  server.send(200, "text/html", SendHTML(true,FLOOR2status,DOORstatus)); 
 }
 
-void handle_led1off() {
-  LED1status = LOW;
-  server.send(200, "text/html", SendHTML(false,LED2status,LCDstatus)); 
+void handle_floor1off() {
+  FLOOR1status = LOW;
+  server.send(200, "text/html", SendHTML(false,FLOOR2status,DOORstatus)); 
 }
 
-void handle_led2on() {
-  LED2status = HIGH;
-  server.send(200, "text/html", SendHTML(LED1status,true,LCDstatus)); 
+void handle_floor2on() {
+  FLOOR2status = HIGH;
+  server.send(200, "text/html", SendHTML(FLOOR1status,true,DOORstatus)); 
 }
 
-void handle_led2off() {
-  LED2status = LOW;
-  server.send(200, "text/html", SendHTML(LED1status,false,LCDstatus)); 
+void handle_floor2off() {
+  FLOOR2status = LOW;
+  server.send(200, "text/html", SendHTML(FLOOR1status,false,DOORstatus)); 
 }
 
-void handle_lcdon() {
+void handle_opendoor() {
   LCDstatus = HIGH;
-  server.send(200, "text/html", SendHTML(LED1status,LED2status,true)); 
+  server.send(200, "text/html", SendHTML(FLOOR1status,FLOOR2status,true)); 
 }
-void handle_lcdoff() {
+void handle_closedoor() {
   LCDstatus = LOW;
-  server.send(200, "text/html", SendHTML(LED1status,LED2status,false)); 
+  server.send(200, "text/html", SendHTML(FLOOR1status,FLOOR2status,false)); 
 }
 
 void handle_NotFound(){
   server.send(404, "text/plain", "Not found");
 }
 
-String SendHTML(uint8_t led1stat,uint8_t led2stat,uint8_t lcdstat){
+String SendHTML(uint8_t floor1stat,uint8_t floor2stat,uint8_t doorstat){
   String ptr = "<!DOCTYPE html> <html>\n";
   ptr +="<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">\n";
   ptr +="<title>LED Control</title>\n";
@@ -120,20 +120,20 @@ String SendHTML(uint8_t led1stat,uint8_t led2stat,uint8_t lcdstat){
   ptr +="<h1>ESP8266 Web Server</h1>\n";
   ptr +="<h3>Using Access Point(AP) Mode</h3>\n";
   
-   if(led1stat)
-  {ptr +="<p>LED1 Status: ON</p><a class=\"button button-off\" href=\"/led1off\">OFF</a>\n";}
+   if(floor1stat)
+  {ptr +="<p>Floor1 Light System: ON</p><a class=\"button button-off\" href=\"/CloseFloor1\">OFF</a>\n";}
   else
-  {ptr +="<p>LED1 Status: OFF</p><a class=\"button button-on\" href=\"/led1on\">ON</a>\n";}
+  {ptr +="<p>Floor1 Light Status: OFF</p><a class=\"button button-on\" href=\"/OpenFloor1\">ON</a>\n";}
 
-  if(led2stat)
-  {ptr +="<p>LED2 Status: ON</p><a class=\"button button-off\" href=\"/led2off\">OFF</a>\n";}
+  if(floor2stat)
+  {ptr +="<p>Floor2 Light System: ON</p><a class=\"button button-off\" href=\"/CloseFloor2\">OFF</a>\n";}
   else
-  {ptr +="<p>LED2 Status: OFF</p><a class=\"button button-on\" href=\"/led2on\">ON</a>\n";}
+  {ptr +="<p>Floor2 Light System: OFF</p><a class=\"button button-on\" href=\"/OpenFloor2\">ON</a>\n";}
   
-  if(lcdstat)
-   {ptr +="<p>LCD Status: ON</p><a class=\"button button-off\" href=\"/lcdoff\">OFF</a>\n";}
+  if(doorstat)
+   {ptr +="<p>Door Status: Opened</p><a class=\"button button-off\" href=\"/CloseDoor\">OFF</a>\n";}
   else
-  {ptr +="<p>LCD Status: OFF</p><a class=\"button button-on\" href=\"/lcdon\">ON</a>\n";}
+  {ptr +="<p>Door Status: Closed</p><a class=\"button button-on\" href=\"/OpenDoor\">ON</a>\n";}
 
   
   ptr +="</body>\n";
