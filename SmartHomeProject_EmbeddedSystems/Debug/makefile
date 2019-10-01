@@ -8,6 +8,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include .metadata/.plugins/org.eclipse.cdt.make.core/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -37,9 +38,6 @@ SmartHomeProject_EmbeddedSystems.hex \
 
 SIZEDUMMY += \
 sizedummy \
-
-AVRDUDEDUMMY += \
-avrdudedummy \
 
 
 # All Target
@@ -71,18 +69,12 @@ sizedummy: SmartHomeProject_EmbeddedSystems.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
-avrdudedummy: SmartHomeProject_EmbeddedSystems.elf
-	@echo 'Invoking: AVRDude'
-	D:\Programs\WinAVR\bin\avrdude -pm32 -cusbasp -Uflash:w:SmartHomeProject_EmbeddedSystems.hex:a
-	@echo 'Finished building: $@'
-	@echo ' '
-
 # Other Targets
 clean:
-	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(AVRDUDEDUMMY)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) SmartHomeProject_EmbeddedSystems.elf
+	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) SmartHomeProject_EmbeddedSystems.elf
 	-@echo ' '
 
-secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY) $(AVRDUDEDUMMY)
+secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 

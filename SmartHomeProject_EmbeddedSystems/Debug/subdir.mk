@@ -13,6 +13,8 @@ C_SRCS += \
 ../LED.c \
 ../TEMP_SENSOR.c \
 ../TIM.c \
+../UART.c \
+../UART_CFG.c \
 ../main.c 
 
 OBJS += \
@@ -25,6 +27,8 @@ OBJS += \
 ./LED.o \
 ./TEMP_SENSOR.o \
 ./TIM.o \
+./UART.o \
+./UART_CFG.o \
 ./main.o 
 
 C_DEPS += \
@@ -37,6 +41,8 @@ C_DEPS += \
 ./LED.d \
 ./TEMP_SENSOR.d \
 ./TIM.d \
+./UART.d \
+./UART_CFG.d \
 ./main.d 
 
 

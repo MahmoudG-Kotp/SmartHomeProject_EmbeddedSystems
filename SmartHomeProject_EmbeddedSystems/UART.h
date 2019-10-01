@@ -1,24 +1,46 @@
 /*
- * uart.h
+ * UART.h
  *
- *  Created on: Mar 12, 2018
- *      Author: ahmedRaafat
+ *  Created on: Oct 1, 2019
+ *      Author: ahmedAlaa
  */
 
 #ifndef UART_H
 #define UART_H
 
-/*include the configuration file*/
-#include "uart_cfg.h"
+/*** Bits of UCSRC ***/
+typedef enum{
+	UCPOL = 0,
+	UCSZ0,
+	UCSZ1,
+	USBS,
+	UPM0,
+	UPM1,
+	UMSEL,
+	URSEL
+}UCSRC_BITS;
+
+/****** Bits of UCSRA ******/
+typedef enum{
+	UDRE = 5,
+	TXC,
+	RXC
+}UCRSA_BITS;
+
+/****** Bits of UCSRB ******/
+typedef enum{
+	UCSZ2 = 2,
+	TXEN,
+	RXEN,
+	RXCIE = 7
+}UCSRB_BITS;
 
 /*define the required interfaces for different functions*/
+/*initialize function that set the baud rate frame format(parity, stop, data bits)*/
+void UART_Initialize(void);
 
-/*initialize function that set the baud rate frame format(parit,stop,data bits)*/
-extern void uart_init(void);
+u8 UART_Read(void);
 
-unsigned char read_uart(void);
-
-void write_uart(unsigned char data);
+void UART_Write(u8 data);
 
 #endif
-
