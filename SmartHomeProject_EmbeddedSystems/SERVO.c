@@ -1,5 +1,5 @@
 /*
- * Door.c
+ * SERVO.c
  *
  *  Created on: Sep 29, 2019
  *      Author: MahmoudGamal
@@ -9,19 +9,19 @@
 #include "util/delay.h"
 #include "GIE.h"
 #include "TIM.h"
-#include "Door.h"
+#include "SERVO.h"
 
-void Door_Initialize()
+void SERVO_Initialize()
 {
 	TIM_voidInitialize();
 }
 
-void Door_OPEN()
+void SERVO_ON()
 {
 	TIM_voidSetCompareValue(15);  //Open degree
 }
 
-void Door_CLOSE()
+void SERVO_OFF()
 {
 	TIM_voidSetCompareValue(200);  //Close degree
 }

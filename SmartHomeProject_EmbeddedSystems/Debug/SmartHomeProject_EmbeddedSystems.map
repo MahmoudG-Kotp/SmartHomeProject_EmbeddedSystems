@@ -7,19 +7,19 @@ d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
                               ./TIM.o (__do_clear_bss)
 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
-                              ./LCD.o (__fixunssfsi)
+                              ./Keypad.o (__fixunssfsi)
 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
                               d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o) (__subsf3)
 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mul_sf.o)
-                              ./LCD.o (__mulsf3)
+                              ./Keypad.o (__mulsf3)
 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_div_sf.o)
                               ./TEMP_SENSOR.o (__divsf3)
 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_gt_sf.o)
-                              ./LCD.o (__gtsf2)
+                              ./Keypad.o (__gtsf2)
 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_ge_sf.o)
                               d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o) (__gesf2)
 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_lt_sf.o)
-                              ./LCD.o (__ltsf2)
+                              ./Keypad.o (__ltsf2)
 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_sf_to_si.o)
                               d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o) (__fixsfsi)
 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_thenan_sf.o)
@@ -41,7 +41,7 @@ d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fpcmp_parts_sf.o)
 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clz.o)
                               d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clzsi2.o) (__clz_tab)
 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(itoa.o)
-                              ./TEMP_SENSOR.o (itoa)
+                              ./Keypad.o (itoa)
 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrev.o)
                               d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(itoa.o) (strrev)
 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
@@ -64,11 +64,12 @@ LOAD d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32
 LOAD ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
 LOAD ./ADC.o
 LOAD ./BUZZER.o
+LOAD ./DC_MOTOR.o
 LOAD ./DIO.o
-LOAD ./Door.o
-LOAD ./Fan.o
+LOAD ./Keypad.o
 LOAD ./LCD.o
 LOAD ./LED.o
+LOAD ./SERVO.o
 LOAD ./TEMP_SENSOR.o
 LOAD ./TIM.o
 LOAD ./UART.o
@@ -168,7 +169,7 @@ LOAD d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x20ca
+.text           0x00000000     0x243a
  *(.vectors)
  .vectors       0x00000000       0x54 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -246,11 +247,12 @@ LOAD d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .text          0x00000092        0x0 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
  .text          0x00000092        0x0 ./ADC.o
  .text          0x00000092        0x0 ./BUZZER.o
+ .text          0x00000092        0x0 ./DC_MOTOR.o
  .text          0x00000092        0x0 ./DIO.o
- .text          0x00000092        0x0 ./Door.o
- .text          0x00000092        0x0 ./Fan.o
+ .text          0x00000092        0x0 ./Keypad.o
  .text          0x00000092        0x0 ./LCD.o
  .text          0x00000092        0x0 ./LED.o
+ .text          0x00000092        0x0 ./SERVO.o
  .text          0x00000092        0x0 ./TEMP_SENSOR.o
  .text          0x00000092        0x0 ./TIM.o
  .text          0x00000092        0x0 ./UART.o
@@ -310,129 +312,140 @@ LOAD d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .text.BUZZER_OFF
                 0x00000ef6       0x16 ./BUZZER.o
                 0x00000ef6                BUZZER_OFF
+ .text.DC_MOTOR_Initialize
+                0x00000f0c       0x16 ./DC_MOTOR.o
+                0x00000f0c                DC_MOTOR_Initialize
+ .text.DC_MOTOR_ON
+                0x00000f22       0x16 ./DC_MOTOR.o
+                0x00000f22                DC_MOTOR_ON
+ .text.DC_MOTOR_OFF
+                0x00000f38       0x16 ./DC_MOTOR.o
+                0x00000f38                DC_MOTOR_OFF
  .text.DIO_voidSetDDR
-                0x00000f0c      0x204 ./DIO.o
-                0x00000f0c                DIO_voidSetDDR
+                0x00000f4e      0x204 ./DIO.o
+                0x00000f4e                DIO_voidSetDDR
  .text.DIO_voidSetPort
-                0x00001110       0x82 ./DIO.o
-                0x00001110                DIO_voidSetPort
+                0x00001152       0x82 ./DIO.o
+                0x00001152                DIO_voidSetPort
  .text.DIO_voidSetPin
-                0x00001192      0x204 ./DIO.o
-                0x00001192                DIO_voidSetPin
+                0x000011d4      0x204 ./DIO.o
+                0x000011d4                DIO_voidSetPin
  .text.DIO_getPortVal
-                0x00001396       0x84 ./DIO.o
-                0x00001396                DIO_getPortVal
+                0x000013d8       0x84 ./DIO.o
+                0x000013d8                DIO_getPortVal
  .text.DIO_getPinVal
-                0x0000141a      0x16a ./DIO.o
-                0x0000141a                DIO_getPinVal
- .text.Door_Initialize
-                0x00001584       0x12 ./Door.o
-                0x00001584                Door_Initialize
- .text.Door_OPEN
-                0x00001596       0x14 ./Door.o
-                0x00001596                Door_OPEN
- .text.Door_CLOSE
-                0x000015aa       0x14 ./Door.o
-                0x000015aa                Door_CLOSE
- .text.Fan_Initialize
-                0x000015be       0x16 ./Fan.o
-                0x000015be                Fan_Initialize
- .text.Fan_ON   0x000015d4       0x16 ./Fan.o
-                0x000015d4                Fan_ON
- .text.Fan_OFF  0x000015ea       0x16 ./Fan.o
-                0x000015ea                Fan_OFF
+                0x0000145c      0x16a ./DIO.o
+                0x0000145c                DIO_getPinVal
+ .text.Keypad_Intialize
+                0x000015c6       0x4e ./Keypad.o
+                0x000015c6                Keypad_Intialize
+ .text.Keypad_GetKeyPressed
+                0x00001614      0x2ea ./Keypad.o
+                0x00001614                Keypad_GetKeyPressed
+ .text.Keypad_GetKeyPressedStr
+                0x000018fe       0x38 ./Keypad.o
+                0x000018fe                Keypad_GetKeyPressedStr
  .text.LCD_WritePin
-                0x00001600      0x2f4 ./LCD.o
+                0x00001936      0x2f4 ./LCD.o
  .text.LCD_WriteCMD
-                0x000018f4       0x2a ./LCD.o
+                0x00001c2a       0x2a ./LCD.o
  .text.LCD_WriteData
-                0x0000191e       0x2a ./LCD.o
+                0x00001c54       0x2a ./LCD.o
  .text.LCD_Initialize
-                0x00001948      0x160 ./LCD.o
-                0x00001948                LCD_Initialize
+                0x00001c7e      0x160 ./LCD.o
+                0x00001c7e                LCD_Initialize
  .text.LCD_Clear
-                0x00001aa8       0x14 ./LCD.o
-                0x00001aa8                LCD_Clear
+                0x00001dde       0x14 ./LCD.o
+                0x00001dde                LCD_Clear
  .text.LCD_Shift
-                0x00001abc       0x3c ./LCD.o
-                0x00001abc                LCD_Shift
+                0x00001df2       0x3c ./LCD.o
+                0x00001df2                LCD_Shift
  .text.LCD_WriteString
-                0x00001af8       0x54 ./LCD.o
-                0x00001af8                LCD_WriteString
+                0x00001e2e       0x54 ./LCD.o
+                0x00001e2e                LCD_WriteString
  .text.LED_Initialize
-                0x00001b4c       0x26 ./LED.o
-                0x00001b4c                LED_Initialize
- .text.LED_ON   0x00001b72       0x5c ./LED.o
-                0x00001b72                LED_ON
- .text.LED_OFF  0x00001bce       0x5c ./LED.o
-                0x00001bce                LED_OFF
+                0x00001e82       0x26 ./LED.o
+                0x00001e82                LED_Initialize
+ .text.LED_ON   0x00001ea8       0x5c ./LED.o
+                0x00001ea8                LED_ON
+ .text.LED_OFF  0x00001f04       0x5c ./LED.o
+                0x00001f04                LED_OFF
  .text.LED_Toggle
-                0x00001c2a       0x90 ./LED.o
-                0x00001c2a                LED_Toggle
+                0x00001f60       0x90 ./LED.o
+                0x00001f60                LED_Toggle
+ .text.SERVO_Initialize
+                0x00001ff0       0x12 ./SERVO.o
+                0x00001ff0                SERVO_Initialize
+ .text.SERVO_ON
+                0x00002002       0x14 ./SERVO.o
+                0x00002002                SERVO_ON
+ .text.SERVO_OFF
+                0x00002016       0x14 ./SERVO.o
+                0x00002016                SERVO_OFF
  .text.TEMP_Initialize
-                0x00001cba       0x1a ./TEMP_SENSOR.o
-                0x00001cba                TEMP_Initialize
+                0x0000202a       0x1a ./TEMP_SENSOR.o
+                0x0000202a                TEMP_Initialize
  .text.TEMP_READ
-                0x00001cd4       0x5a ./TEMP_SENSOR.o
-                0x00001cd4                TEMP_READ
+                0x00002044       0x5a ./TEMP_SENSOR.o
+                0x00002044                TEMP_READ
  .text.TEMP_STR_READ
-                0x00001d2e       0x2e ./TEMP_SENSOR.o
-                0x00001d2e                TEMP_STR_READ
+                0x0000209e       0x2e ./TEMP_SENSOR.o
+                0x0000209e                TEMP_STR_READ
  .text.TIM_voidInitialize
-                0x00001d5c       0x94 ./TIM.o
-                0x00001d5c                TIM_voidInitialize
+                0x000020cc       0x94 ./TIM.o
+                0x000020cc                TIM_voidInitialize
  .text.TIM_voidEnableInterrupt
-                0x00001df0       0x2a ./TIM.o
-                0x00001df0                TIM_voidEnableInterrupt
+                0x00002160       0x2a ./TIM.o
+                0x00002160                TIM_voidEnableInterrupt
  .text.TIM_voidDisableInterrupt
-                0x00001e1a       0x1c ./TIM.o
-                0x00001e1a                TIM_voidDisableInterrupt
+                0x0000218a       0x1c ./TIM.o
+                0x0000218a                TIM_voidDisableInterrupt
  .text.TIM_voidInitTimerRegister
-                0x00001e36       0x1c ./TIM.o
-                0x00001e36                TIM_voidInitTimerRegister
+                0x000021a6       0x1c ./TIM.o
+                0x000021a6                TIM_voidInitTimerRegister
  .text.TIM_voidSetCompareValue
-                0x00001e52       0x1c ./TIM.o
-                0x00001e52                TIM_voidSetCompareValue
+                0x000021c2       0x1c ./TIM.o
+                0x000021c2                TIM_voidSetCompareValue
  .text.TIM_voidSetCallBack
-                0x00001e6e       0x24 ./TIM.o
-                0x00001e6e                TIM_voidSetCallBack
+                0x000021de       0x24 ./TIM.o
+                0x000021de                TIM_voidSetCallBack
  .text.__vector_11
-                0x00001e92       0x5a ./TIM.o
-                0x00001e92                __vector_11
+                0x00002202       0x5a ./TIM.o
+                0x00002202                __vector_11
  .text.__vector_10
-                0x00001eec       0x5a ./TIM.o
-                0x00001eec                __vector_10
+                0x0000225c       0x5a ./TIM.o
+                0x0000225c                __vector_10
  .text.UART_Initialize
-                0x00001f46       0x24 ./UART.o
-                0x00001f46                UART_Initialize
+                0x000022b6       0x24 ./UART.o
+                0x000022b6                UART_Initialize
  .text.UART_Write
-                0x00001f6a       0x2e ./UART.o
-                0x00001f6a                UART_Write
+                0x000022da       0x2e ./UART.o
+                0x000022da                UART_Write
  .text.UART_Read
-                0x00001f98       0x24 ./UART.o
-                0x00001f98                UART_Read
- .text.main     0x00001fbc       0x12 ./main.o
-                0x00001fbc                main
- .text.libgcc   0x00001fce        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00001fce        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x00001fce        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x00001fce       0x38 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x00001fce                __prologue_saves__
- .text.libgcc   0x00002006       0x36 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x00002006                __epilogue_restores__
+                0x00002308       0x24 ./UART.o
+                0x00002308                UART_Read
+ .text.main     0x0000232c       0x12 ./main.o
+                0x0000232c                main
+ .text.libgcc   0x0000233e        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x0000233e        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x0000233e        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x0000233e       0x38 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x0000233e                __prologue_saves__
+ .text.libgcc   0x00002376       0x36 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x00002376                __epilogue_restores__
  .text.avr-libc
-                0x0000203c       0x42 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(itoa.o)
-                0x0000203c                itoa
+                0x000023ac       0x42 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(itoa.o)
+                0x000023ac                itoa
  .text.avr-libc
-                0x0000207e       0x20 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrev.o)
-                0x0000207e                strrev
- .text.libgcc   0x0000209e       0x28 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
-                0x0000209e                __udivmodhi4
-                0x000020c6                . = ALIGN (0x2)
+                0x000023ee       0x20 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrev.o)
+                0x000023ee                strrev
+ .text.libgcc   0x0000240e       0x28 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                0x0000240e                __udivmodhi4
+                0x00002436                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000020c6        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x000020c6                exit
-                0x000020c6                _exit
+ .fini9         0x00002436        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00002436                exit
+                0x00002436                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -451,22 +464,23 @@ LOAD d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000020c6        0x4 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00002436        0x4 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000020ca                _etext = .
+                0x0000243a                _etext = .
 
-.data           0x00800060      0x110 load address 0x000020ca
+.data           0x00800060      0x110 load address 0x0000243a
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  .data          0x00800060        0x0 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
  .data          0x00800060        0x0 ./ADC.o
  .data          0x00800060        0x0 ./BUZZER.o
+ .data          0x00800060        0x0 ./DC_MOTOR.o
  .data          0x00800060        0x0 ./DIO.o
- .data          0x00800060        0x0 ./Door.o
- .data          0x00800060        0x0 ./Fan.o
+ .data          0x00800060        0x0 ./Keypad.o
  .data          0x00800060        0x0 ./LCD.o
  .data          0x00800060        0x0 ./LED.o
+ .data          0x00800060        0x0 ./SERVO.o
  .data          0x00800060        0x0 ./TEMP_SENSOR.o
  .data          0x00800060        0x0 ./TIM.o
  .data          0x00800060        0x0 ./UART.o
@@ -516,11 +530,12 @@ LOAD d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .bss           0x00800170        0x0 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
  .bss           0x00800170        0x0 ./ADC.o
  .bss           0x00800170        0x0 ./BUZZER.o
+ .bss           0x00800170        0x0 ./DC_MOTOR.o
  .bss           0x00800170        0x0 ./DIO.o
- .bss           0x00800170        0x0 ./Door.o
- .bss           0x00800170        0x0 ./Fan.o
+ .bss           0x00800170        0x0 ./Keypad.o
  .bss           0x00800170        0x0 ./LCD.o
  .bss           0x00800170        0x0 ./LED.o
+ .bss           0x00800170        0x0 ./SERVO.o
  .bss           0x00800170        0x0 ./TEMP_SENSOR.o
  .bss           0x00800170        0x0 ./TIM.o
  .bss           0x00800170        0x0 ./UART.o
@@ -554,8 +569,8 @@ LOAD d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00800170        0x2 ./TIM.o
  *(COMMON)
                 0x00800172                PROVIDE (__bss_end, .)
-                0x000020ca                __data_load_start = LOADADDR (.data)
-                0x000021da                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000243a                __data_load_start = LOADADDR (.data)
+                0x0000254a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800172        0x0
                 0x00800172                PROVIDE (__noinit_start, .)
@@ -580,37 +595,39 @@ LOAD d:/programs/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000     0x2238
+.stab           0x00000000     0x26c4
  *(.stab)
  .stab          0x00000000       0xe4 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
  .stab          0x000000e4      0x234 ./ADC.o
                                 0x240 (size before relaxing)
  .stab          0x00000318      0x1d4 ./BUZZER.o
                                 0x258 (size before relaxing)
- .stab          0x000004ec      0x4c8 ./DIO.o
-                                0x5a0 (size before relaxing)
- .stab          0x000009b4      0x39c ./Door.o
-                                0x420 (size before relaxing)
- .stab          0x00000d50      0x180 ./Fan.o
+ .stab          0x000004ec      0x180 ./DC_MOTOR.o
                                 0x258 (size before relaxing)
- .stab          0x00000ed0      0x648 ./LCD.o
+ .stab          0x0000066c      0x4c8 ./DIO.o
+                                0x5a0 (size before relaxing)
+ .stab          0x00000b34      0x684 ./Keypad.o
+                                0x75c (size before relaxing)
+ .stab          0x000011b8      0x648 ./LCD.o
                                 0x8a0 (size before relaxing)
- .stab          0x00001518      0x300 ./LED.o
+ .stab          0x00001800      0x300 ./LED.o
                                 0x564 (size before relaxing)
- .stab          0x00001818      0x204 ./TEMP_SENSOR.o
+ .stab          0x00001b00      0x210 ./SERVO.o
+                                0x420 (size before relaxing)
+ .stab          0x00001d10      0x1b0 ./TEMP_SENSOR.o
                                 0x2dc (size before relaxing)
- .stab          0x00001a1c      0x330 ./TIM.o
+ .stab          0x00001ec0      0x330 ./TIM.o
                                 0x474 (size before relaxing)
- .stab          0x00001d4c      0x2b8 ./UART.o
+ .stab          0x000021f0      0x2b8 ./UART.o
                                 0x33c (size before relaxing)
- .stab          0x00002004       0xfc ./UART_CFG.o
+ .stab          0x000024a8       0xfc ./UART_CFG.o
                                 0x1e0 (size before relaxing)
- .stab          0x00002100      0x138 ./main.o
-                                0x1e0 (size before relaxing)
+ .stab          0x000025a4      0x120 ./main.o
+                                0x12c (size before relaxing)
 
-.stabstr        0x00000000     0x15eb
+.stabstr        0x00000000     0x1677
  *(.stabstr)
- .stabstr       0x00000000     0x15eb ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .stabstr       0x00000000     0x1677 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
 
 .stab.excl
  *(.stab.excl)

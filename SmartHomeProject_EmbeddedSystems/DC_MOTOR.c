@@ -1,24 +1,24 @@
 /*
- * Fan.c
+ * DC_MOTOR.c
  *
  *  Created on: Sep 29, 2019
  *      Author: MahmoudGamal
  */
 #include "DIO.h"
-#include "Fan.h"
+#include "DC_MOTOR.h"
 
-void Fan_Initialize()
+void DC_MOTOR_Initialize()
 {
 	DIO_voidSetDDR(DC_MOTOR, HIGH); //Set DDR Output
 }
 
-void Fan_ON()
+void DC_MOTOR_ON()
 {
 
 	DIO_voidSetPin(DC_MOTOR, HIGH);
 }
 
-void Fan_OFF()
+void DC_MOTOR_OFF()
 {
 	DIO_voidSetPin(DC_MOTOR, LOW);
 }

@@ -6,11 +6,12 @@
 C_SRCS += \
 ../ADC.c \
 ../BUZZER.c \
+../DC_MOTOR.c \
 ../DIO.c \
-../Door.c \
-../Fan.c \
+../Keypad.c \
 ../LCD.c \
 ../LED.c \
+../SERVO.c \
 ../TEMP_SENSOR.c \
 ../TIM.c \
 ../UART.c \
@@ -20,11 +21,12 @@ C_SRCS += \
 OBJS += \
 ./ADC.o \
 ./BUZZER.o \
+./DC_MOTOR.o \
 ./DIO.o \
-./Door.o \
-./Fan.o \
+./Keypad.o \
 ./LCD.o \
 ./LED.o \
+./SERVO.o \
 ./TEMP_SENSOR.o \
 ./TIM.o \
 ./UART.o \
@@ -34,11 +36,12 @@ OBJS += \
 C_DEPS += \
 ./ADC.d \
 ./BUZZER.d \
+./DC_MOTOR.d \
 ./DIO.d \
-./Door.d \
-./Fan.d \
+./Keypad.d \
 ./LCD.d \
 ./LED.d \
+./SERVO.d \
 ./TEMP_SENSOR.d \
 ./TIM.d \
 ./UART.d \

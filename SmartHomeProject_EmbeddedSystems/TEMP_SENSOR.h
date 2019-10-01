@@ -9,8 +9,8 @@
 #define TEMP_SENSOR_H
 #include "STD_TYPES.h"
 
-void TEMP_Initialize();
-void TEMP_STR_READ();
+void TEMP_Initialize(void);
+void TEMP_STR_READ(char *strPtr);
 u8 TEMP_READ();
 
 #endif /* TEMP_SENSOR_H */

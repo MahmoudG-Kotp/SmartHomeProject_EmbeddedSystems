@@ -24,6 +24,6 @@
 void LCD_Initialize(void);
 void LCD_Shift(u8 row, u8 column);
 void LCD_WriteString(u8 *str);
-void LCD_Clear();
+void LCD_Clear(void);
 
 #endif // LCD_H

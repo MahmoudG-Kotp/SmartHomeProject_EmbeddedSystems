@@ -5,12 +5,7 @@
  *      Author: MahmoudGamal
  */
 
-#include  "TEMP_SENSOR.h"
-#include "LED.h"
-
 int main()
 {
-
-
-	return 0;
+	
 }

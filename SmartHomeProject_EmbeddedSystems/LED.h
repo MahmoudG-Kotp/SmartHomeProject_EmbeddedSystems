@@ -15,7 +15,7 @@ typedef enum {
 }LED_Channels;
 
 /*LEDs Controlling*/
-void LED_Initialize();
+void LED_Initialize(void);
 void LED_ON(u8 LED_Channel);
 void LED_OFF(u8 LED_Channel);
 void LED_Toggle(u8 LED_Channel);
