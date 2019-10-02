@@ -7,6 +7,7 @@
 
 #ifndef LED_H
 #define LED_H
+#include "STD_TYPES.h"
 
 typedef enum {
 	LED_CHANNEL_0 = 0,
