@@ -80,8 +80,6 @@ void LCD_Initialize()
 
 	/*we send data on mode 8 or 4 according to which LCD supports*/
 	#if(LCD_MODE_PIN == LCD_MODE_8)
-		LCD_WriteCMD(LCD_8_MODE_CMD);
-
 		//setDirection Output
 		DIO_voidSetDDR(LCD_D0, HIGH);
 		DIO_voidSetDDR(LCD_D1, HIGH);
@@ -92,16 +90,18 @@ void LCD_Initialize()
 		DIO_voidSetDDR(LCD_D6, HIGH);
 		DIO_voidSetDDR(LCD_D7, HIGH);
 
-	#elif(LCD_MODE_PIN == LCD_MODE_4)
-	/*to send data on 4 mode we need to write three addresses*/
-		LCD_WriteCMD(LCD_4_MODE_CMD_SEQ1);
-		LCD_WriteCMD(LCD_4_MODE_CMD_SEQ2);
-		LCD_WriteCMD(LCD_4_MODE_CMD_SEQ3);
+		LCD_WriteCMD(LCD_8_MODE_CMD);
 
+	#elif(LCD_MODE_PIN == LCD_MODE_4)
 		DIO_voidSetDDR(LCD_D4, HIGH);
 		DIO_voidSetDDR(LCD_D5, HIGH);
 		DIO_voidSetDDR(LCD_D6, HIGH);
 		DIO_voidSetDDR(LCD_D7, HIGH);
+
+	/*to send data on 4 mode we need to write three addresses*/
+		LCD_WriteCMD(LCD_4_MODE_CMD_SEQ1);
+		LCD_WriteCMD(LCD_4_MODE_CMD_SEQ2);
+		LCD_WriteCMD(LCD_4_MODE_CMD_SEQ3);
 
 	#else
 		//ERROR
@@ -130,3 +130,8 @@ void LCD_WriteString(u8 *str)
 	}
 }
 
+void LCD_WriteStringXY(u8 *str, u8 columnShift, u8 rowShift)
+{
+	LCD_Shift(columnShift, rowShift);
+	LCD_WriteString(str);
+}

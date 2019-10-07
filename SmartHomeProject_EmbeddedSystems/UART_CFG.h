@@ -8,8 +8,8 @@
 #ifndef UART_CFG_H
 #define UART_CFG_H
 
-/* define system frequency */
-#define F_CPU 16000000UL
+///* define system frequency */
+//#define F_CPU 16000000UL
 
 /****** defines for configuration ****/
 

@@ -5,8 +5,8 @@
  *      Author: MahmoudGamal
  */
 
-#ifndef TIM_REG_H_
-#define TIM_REG_H_
+#ifndef TIM_REG_H
+#define TIM_REG_H
 
 #define TCCR0 *((volatile u8*)0x53) //Timer/Counter Control Register >> control OC behavior and Prescaler
 #define TCNT0 *((volatile u8*)0x52) //Timer/Counter Location of Counts >> you can read from to know which u count u r in

@@ -8,7 +8,6 @@ C_SRCS += \
 ../BUZZER.c \
 ../DC_MOTOR.c \
 ../DIO.c \
-../EXTI.c \
 ../Keypad.c \
 ../LCD.c \
 ../LED.c \
@@ -24,7 +23,6 @@ OBJS += \
 ./BUZZER.o \
 ./DC_MOTOR.o \
 ./DIO.o \
-./EXTI.o \
 ./Keypad.o \
 ./LCD.o \
 ./LED.o \
@@ -40,7 +38,6 @@ C_DEPS += \
 ./BUZZER.d \
 ./DC_MOTOR.d \
 ./DIO.d \
-./EXTI.d \
 ./Keypad.d \
 ./LCD.d \
 ./LED.d \

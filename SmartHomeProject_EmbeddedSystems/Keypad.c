@@ -5,10 +5,12 @@
  *      Author: MahmoudGamal
  */
 
+#include "Keypad.h"
+
 #include "DIO.h"
+#include "string.h"
 #include <stdlib.h>
 #include <util/delay.h>
-#include "Keypad.h"
 
 void Keypad_Intialize()
 {
@@ -97,8 +99,7 @@ s8 Keypad_GetKeyPressed()
 			}//end of if statement
 		}//end of second for loop
 	}//end of 1st for loop
-	_delay_ms(200); //delay to not repeat
-	return -1; //No Key Pressed
+	return -1;//No Key Pressed
 }
 
 void Keypad_GetKeyPressedStr(char *strPtr)
@@ -119,5 +120,4 @@ void Keypad_GetKeyPressedStr(char *strPtr)
 		}
 	}
 }
-
 

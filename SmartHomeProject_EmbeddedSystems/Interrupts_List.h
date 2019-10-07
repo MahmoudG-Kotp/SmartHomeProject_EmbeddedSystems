@@ -10,22 +10,37 @@
 
 //vectors is memory locations contains jump instructions to interrupt functions like reset
 //non-maskable mean can't be disabled like reset
-#define EXTI_INT0				   	__vector_1
-#define EXTI_INT1				   	__vector_2
-#define EXTI_INT2				   	__vector_3
-#define TIMER2_COMP					__vector_4
-#define TIMER2_OVF					__vector_5
-#define TIMER1_CAPT					__vector_6
-#define TIMER1_COMPA				__vector_7
-#define TIMER1_COMPB				__vector_8
-#define TIMER1_OVF					__vector_9
-#define TIMER0_COMP					__vector_10
-#define TIMER0_OVF					__vector_11
-#define SPI_STC						__vector_12
-#define USART_RXC					__vector_13
-#define USART_UDRE					__vector_14
-#define USART_TXC					__vector_15
-#define ADC							__vector_16
-
+#define EXTI_INT0()				   	void __vector_1(void) __attribute__((signal,used));\
+									void __vector_1(void)
+#define EXTI_INT1()				   	void __vector_2(void) __attribute__((signal,used));\
+									void __vector_2(void)
+#define EXTI_INT2()				   	void __vector_3(void) __attribute__((signal,used));\
+									void __vector_3(void)
+#define TIMER2_COMP()				void __vector_4(void) __attribute__((signal,used));\
+									void __vector_4(void)
+#define TIMER2_OVF()				void __vector_5(void) __attribute__((signal,used));\
+									void __vector_5(void)
+#define TIMER1_CAPT()				void __vector_6(void) __attribute__((signal,used));\
+									void __vector_6(void)
+#define TIMER1_COMPA()				void __vector_7(void) __attribute__((signal,used));\
+									void __vector_7(void)
+#define TIMER1_COMPB()				void __vector_8(void) __attribute__((signal,used));\
+									void __vector_8(void)
+#define TIMER1_OVF()				void __vector_9(void) __attribute__((signal,used));\
+									void __vector_9(void)
+#define TIMER0_COMP()				void __vector_10(void) __attribute__((signal,used));\
+									void __vector_10(void)
+#define TIMER0_OVF()				void __vector_11(void) __attribute__((signal,used));\
+									void __vector_11(void)
+#define SPI_STC()					void __vector_12(void) __attribute__((signal,used));\
+									void __vector_12(void)
+#define USART_RXC()					void __vector_13(void) __attribute__((signal,used));\
+									void __vector_13(void)
+#define USART_UDRE()				void __vector_14(void) __attribute__((signal,used));\
+									void __vector_14(void)
+#define USART_TXC()					void __vector_15(void) __attribute__((signal,used));\
+									void __vector_15(void)
+#define ADC_INT()					void __vector_16(void) __attribute__((signal,used));\
+									void __vector_16(void)
 
 #endif /* INTERRUPTS_LIST_H_ */

@@ -1,7 +1,7 @@
-Keypad.o Keypad.o: ../Keypad.c ../DIO.h ../STD_TYPES.h ../Keypad.h
+Keypad.o Keypad.o: ../Keypad.c ../Keypad.h ../STD_TYPES.h ../DIO.h
 
-../DIO.h:
+../Keypad.h:
 
 ../STD_TYPES.h:
 
-../Keypad.h:
+../DIO.h:

@@ -16,9 +16,10 @@
 #define ADMUX_CLEAR_MSK 	  0b11100000
 /* Enable ADC(ADCSRA 7),Start Conversion(ADCSRA 6),
  * Disable Trigger source(using Single Conversion Mode)(ADCSRA5),
- * Clear Flag(ADCSRA4),Disable Interrupt (ADCSRA3),
- * (ADCSRA2:0)sampling freq=osc_freq/128 */
+ * Clear Flag(ADCSRA4),Enable Interrupt (ADCSRA3),
+ * (ADCSRA2:0)sampling frequency=osc_freq/128 */
 #define ADCSRA_ENABLE_MSK	  0b11010111
+#define ADCSRA_ENABLE_INT_MSK 0b00001000
 /* start conversion write '1' to ADSC */
 #define START_CONVERSION_MSK  0b01000000
 /* channel number must be from 0 --> 7 So You need Mask the Variable with 0x07 */

@@ -11,6 +11,8 @@
 
 void TEMP_Initialize(void);
 void TEMP_STR_READ(char *strPtr);
-u8 TEMP_READ();
+u8 TEMP_READ(void);
+void TEMP_EnableInterrupt(void);
+u8 TEMP_GetFireFlag(void);
 
 #endif /* TEMP_SENSOR_H */

@@ -14,6 +14,7 @@ void DIO_voidSetDDR(H_PINS pinIndex, u8 directionStatus)
 {
 	switch(pinIndex)
 	{
+
 		//Don't use pinVal directly cause we need it at statements cause we need it at specific conditions
 		case 0 ... 7: if(directionStatus == HIGH)
 					  {

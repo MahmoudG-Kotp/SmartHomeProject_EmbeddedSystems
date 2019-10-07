@@ -47,7 +47,7 @@ void TIM_voidEnableInterrupt(void);
 void TIM_voidDisableInterrupt(void);
 
 /*Description: set Timer callback function*/
-void TIM_voidSetCallBack(Ptr2FuncType funcPtr);
+void TIM_voidSetCallBack(PtrToFuncType funcPtr);
 
 /*Description: initialize timer register*/
 void TIM_voidInitTimerRegister(u8 startCnt);

@@ -22,6 +22,6 @@ typedef double f64;
 
 
 //pointer to function
-typedef void(*Ptr2FuncType)(void);
+typedef void(*PtrToFuncType)(void);
 
 #endif // STANDARD_TYPES_H

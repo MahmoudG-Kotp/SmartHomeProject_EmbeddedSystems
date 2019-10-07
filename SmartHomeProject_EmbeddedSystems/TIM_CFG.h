@@ -23,17 +23,12 @@
 #define TIM_DIV_BY_256_MSK 	0b00000100
 #define TIM_DIV_BY_1024_MSK 0b00000101
 
-//Divides frequency of clock to reduce it to make counter able to count frequency
-#define TIM_PRESCALER_MODE  TIM_DIV_BY_64
-
 //Counter MODES
 //Convert between them by editing in WGM01 BIT_3, WGM00 BIT_6 in TCCR0 register
 #define TIM_MODE_CLEAR_MSK 		0b10110111
 #define TIM_MODE_NORMAL_MSK 	0b10110111 //Clear when reaches Max Value
 #define TIM_MODE_CTC_MSK 		0b00001000//Clear when reaches to compare match then give flag pulse
 #define TIM_MODE_FAST_PWM_MSK 	0b01001000
-
-#define TIM_MODE TIM_MODE_FAST_PWM
 
 /*what happens when compare match on OC0*/
 /*
@@ -59,10 +54,15 @@ COM01 COM00 Description
 #define OC_NON_INVERTING_MSK 			0b00100000
 #define OC_INVERTING_MSK 				0b00110000
 
-#define OC_MODE  OC_INVERTING
-
 /*Description: Timer initial value*/
 #define TIM_INIT_VALUE 0
+
+//Divides frequency of clock to reduce it to make counter able to count frequency
+#define TIM_PRESCALER_MODE  TIM_DIV_BY_64
+
+#define OC_MODE  OC_INVERTING
+
+#define TIM_MODE TIM_MODE_FAST_PWM
 
 /*define the initial compare value in the initialization*/
 #define INIT_COMPARE_VALUE 250

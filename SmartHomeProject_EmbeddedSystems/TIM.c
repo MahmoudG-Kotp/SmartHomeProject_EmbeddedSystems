@@ -7,12 +7,13 @@
 
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
+#include "Interrupts_List.h"
 #include "DIO.h"
 #include "TIM_REG.h"
 #include "TIM_CFG.h"
 #include "TIM.h"
 
-static Ptr2FuncType TIM_CallBacKFunc;
+static PtrToFuncType TIM_CallBacKFunc;
 
 /*Description: This function shall initialize the Timer peripheral*/
 void TIM_voidInitialize()
@@ -151,20 +152,18 @@ void TIM_voidSetCompareValue(u8 compareVal)
 }
 
 /*Description: set Timer callback function*/
-void TIM_voidSetCallBack(Ptr2FuncType funcPtr)
+void TIM_voidSetCallBack(PtrToFuncType funcPtr)
 {
 	TIM_CallBacKFunc = funcPtr;
 }
 
 /*defining the interrupt handling function*/
-void __vector_11 (void)__attribute__((signal,used));
-void __vector_11 (void)
+TIMER0_OVF()
 {
 	TIM_CallBacKFunc();
 }
 
-void __vector_10 (void)__attribute__((signal,used));
-void __vector_10 (void)
+TIMER0_COMP()
 {
 	TIM_CallBacKFunc();
 }
